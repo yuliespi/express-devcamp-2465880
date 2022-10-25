@@ -2,6 +2,7 @@ const express = require('express')
 const dontenv = require('dotenv')//importacion de puerto
 const colors = require('colors')
 const bootcampRoutes = require ('./routes/BootcampsRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 //establecer el archivo de configuracion, con variables de entorno del proyecto
 dontenv.config({
@@ -11,7 +12,11 @@ dontenv.config({
 //1 crear el objeto app 
 const app = express()
 
+//dependencias de la conexion db
+const connect =require('./config/db')
+
 app.use('/api/v1/bootcamps' , bootcampRoutes)
+app.use('/api/v1/users' , userRoutes)
 
 //2. crear ruta de prueba
 /*app.get('/' , (request , response)=>{
