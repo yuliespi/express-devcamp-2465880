@@ -1,6 +1,8 @@
 const express = require('express')
 const dontenv = require('dotenv')//importacion de puerto
 const colors = require('colors')
+const listEndpoints = require ('express-list-endpoints')
+
 const bootcampRoutes = require ('./routes/BootcampsRoutes')
 const userRoutes = require('./routes/userRoutes')
 
@@ -11,12 +13,15 @@ dontenv.config({
 
 //1 crear el objeto app 
 const app = express()
+app.use(express.json())
 
 //dependencias de la conexion db
 const connect =require('./config/db')
 
 app.use('/api/v1/bootcamps' , bootcampRoutes)
 app.use('/api/v1/users' , userRoutes)
+
+console.log(listEndpoints(app))
 
 //2. crear ruta de prueba
 /*app.get('/' , (request , response)=>{

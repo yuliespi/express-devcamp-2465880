@@ -1,11 +1,6 @@
 //conecta la bd
 
 const sequelize= require('./seq')
-const UserModel = require('../models/user')
-//dependencia a dataTypes
-const {DataTypes} = require('sequelize')
-//crear el modelo
-const User = UserModel(sequelize , DataTypes)
 //funcion asincrona aync , para conexion
 
 const connect =async () =>{
@@ -26,4 +21,4 @@ const connect =async () =>{
 }
 
 //ejecutar conexion
-connect()
+module.exports= connect
