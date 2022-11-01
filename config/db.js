@@ -12,8 +12,8 @@ const connect =async () =>{
       // console.log(users)
 
        // Create a new user
-        const Carlos = await User.create({ name: "Carlos", email: "Do@misena.co",password:"111" });
-        console.log("insertando un usuario", Carlos.id);
+        //const Carlos = await User.create({ name: "Carlos", email: "Do@misena.co",password:"111" });
+        //console.log("insertando un usuario", Carlos.id);
                 
     }catch(error){
         console.error(error)

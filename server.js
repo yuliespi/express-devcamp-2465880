@@ -2,6 +2,7 @@ const express = require('express')
 const dontenv = require('dotenv')//importacion de puerto
 const colors = require('colors')
 const listEndpoints = require ('express-list-endpoints')
+const conect = require('./config/db')
 
 const bootcampRoutes = require ('./routes/BootcampsRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -13,6 +14,7 @@ dontenv.config({
 
 //1 crear el objeto app 
 const app = express()
+conect()
 app.use(express.json())
 
 //dependencias de la conexion db
