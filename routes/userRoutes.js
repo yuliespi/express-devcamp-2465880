@@ -14,7 +14,7 @@ router.route('/')
         .get(traerUsario)
         .post(CrearUser)
 router.route('/:id')    
-            .get(traerUsario)
+            .get(traerUserPorId)
             .put(actualizarUser)
             .delete(borrarUser)
 
