@@ -4,8 +4,10 @@ const colors = require('colors')
 const listEndpoints = require ('express-list-endpoints')
 const conect = require('./config/db')
 
-const bootcampRoutes = require ('./routes/BootcampsRoutes')
-const userRoutes = require('./routes/userRoutes')
+const bootcampRoutes = require ('./routes/BootcampsRoutes');
+const userRoutes = require('./routes/userRoutes');
+const CoursesRoutes = require('./routes/coursesRoutes');
+const ReviewRoutes = require('./routes/reviewRoutes')
 
 //establecer el archivo de configuracion, con variables de entorno del proyecto
 dontenv.config({
@@ -22,6 +24,8 @@ const connect =require('./config/db')
 
 app.use('/api/v1/bootcamps' , bootcampRoutes)
 app.use('/api/v1/users' , userRoutes)
+app.use('/api/v1/courses' , CoursesRoutes)
+app.use('/api/v1/review' , ReviewRoutes)
 
 console.log(listEndpoints(app))
 

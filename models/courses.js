@@ -4,11 +4,7 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Courses extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
       // define association here
     }
@@ -16,12 +12,46 @@ module.exports = (sequelize, DataTypes) => {
   Courses.init({
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    weeks: DataTypes.INTEGER,
-    enroll_cost: DataTypes.FLOAT,
-    minimum_skill: DataTypes.STRING
-  }, {
+    weeks: {
+      type:DataTypes.INTEGER,
+      validate:{
+        isNumeric: true,
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo name"
+        },      
+        len:{
+          args:[2, 10],
+          msg:"Las semanas debe tener mas 2 y 10 dias"
+        },
+      }
+    },
+    enroll_cost:{
+      type:DataTypes.FLOAT,
+      validate:{
+        isFloat: true,
+
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo name"
+        },
+      }
+    },
+    minimum_skill: {
+      type: DataTypes.STRING,
+
+      notEmpty:{
+        args:true,
+        msg:"Debe llenarse el campo name"
+      },
+      notNull:true,
+  },
+ },
+  {
     sequelize,
     modelName: 'Courses',
+    timestamps:false
   });
   return Courses;
+
 };

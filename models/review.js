@@ -14,12 +14,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Review.init({
-    title: DataTypes.STRING,
-    text: DataTypes.STRING,
-    rating: DataTypes.FLOAT
+    title: {
+      type:DataTypes.STRING,
+      validate:{
+        isAlpha: true, 
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo title"
+        },
+      }
+    },
+    text: {
+      type:DataTypes.STRING,
+      validate:{
+        isAlpha: true, 
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo text"
+        },
+      }
+    },
+    rating:{
+      type:DataTypes.FLOAT,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo rating"
+        },
+      }
+    } 
   }, {
     sequelize,
     modelName: 'Review',
+    timestamps:false
   });
   return Review;
 };
