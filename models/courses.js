@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
           msg:"Debe llenarse el campo name"
         },      
         len:{
-          args:[2, 10],
-          msg:"Las semanas debe tener mas 2 y 10 dias"
+          args:[2, 5],
+          msg:"Las semanas debe ser mas de 10 dias"
         },
       }
     },
