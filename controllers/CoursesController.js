@@ -10,35 +10,11 @@ const Courses = CoursesModel(sequelize, DataTypes)
 
 //POST: crear un nuevo recurso
 exports.CrearCourses = async(req , res)=>{
-    try {
-        const newCourses = await Courses.create(req.body);
-    res.status(201).json({
-        "success": true,
-         "data": newCourses
+    const newCourses = await Courses.create(req.body);
+    res.status(200).json({
+        "data": newCourses
     })
-        
-    } catch (error) {
-        //poner los mensajes de error de una variable
-        //llevar errores al responisve
-     if(error instanceof ValidationError){
-        res
-        .status(422)
-        .json({
-            "success": false,
-            "errors": error.errors.map((e)=>e.message)
-        })
-    
-    }else{
-        //errores de servidor
-        res
-        .status(500)
-        .json({
-            "success": false,
-            "errors": "error de servidor"
-        })
-    }
-
-}
+   
 }
 //Traer todos los courses
 exports.traerCourses = async (req , res) =>{

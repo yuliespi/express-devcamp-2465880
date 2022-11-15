@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Review.init({
     title: {
       type:DataTypes.STRING,
+      allowNull: false,
       validate:{
         isAlpha: true, 
         notEmpty:{
@@ -26,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     text: {
       type:DataTypes.STRING,
+      allowNull: false,
       validate:{
         isAlpha: true, 
         notEmpty:{
@@ -36,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating:{
       type:DataTypes.FLOAT,
+      allowNull: false,
       validate:{
         notEmpty:{
           args:true,

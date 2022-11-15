@@ -10,10 +10,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Courses.init({
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    title: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          args:true,
+          msg:"Debe llenarse el campo title"
+        },
+      }
+    },
     weeks: {
       type:DataTypes.INTEGER,
+      allowNull: false,
       validate:{
         isNumeric: true,
         notEmpty:{
@@ -30,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.FLOAT,
       validate:{
         isFloat: true,
-
         notEmpty:{
           args:true,
           msg:"Debe llenarse el campo name"
@@ -45,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         msg:"Debe llenarse el campo name"
       },
       notNull:true,
-  },
+  }
  },
   {
     sequelize,
